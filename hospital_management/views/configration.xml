@@ -1,0 +1,70 @@
+<odoo>
+    <data>
+        <record id="hospital_configuration_form" model="ir.ui.view">
+            <field name="name">hospital.configuration.form</field>
+            <field name="model">hospital.configuration</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="active"/>
+                                <field name="color" widget="color_picker"/>
+<!--                                <field name="color" widget="color"/>-->
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="hospital_configuration_tree" model="ir.ui.view">
+            <field name="name">hospital.configuration.tree</field>
+            <field name="model">hospital.configuration</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="active"/>
+                    <field name="color"/>
+                </tree>
+            </field>
+        </record>
+        <record id="hospital_configuration_search" model="ir.ui.view">
+            <field name="name">hospital.configuration.search</field>
+            <field name="model">hospital.configuration</field>
+            <field name="arch" type="xml">
+                <search>
+
+                    <field name="name"/>
+                    <field name="active"/>
+
+                </search>
+            </field>
+        </record>
+        <record id="tags_menu_action" model="ir.actions.act_window">
+            <field name="name">Configuration</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hospital.configuration</field>
+            <field name="view_mode">tree,form,search</field>
+            <field name="context">{}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a new patient
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="conf_menu"
+                  name="Configuration"
+                  parent="hospital_main_menu"
+                  sequence="5"
+                  action="tags_menu_action"/>
+
+        <menuitem id="tags_menu"
+                  name="Patient Tags"
+                  parent="conf_menu"
+                  sequence="5"
+                  action="tags_menu_action"/>
+    </data>
+</odoo>

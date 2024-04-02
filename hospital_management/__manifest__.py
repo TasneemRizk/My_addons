@@ -1,0 +1,31 @@
+# -*- coding: utf-8 -*-
+{
+    'name': 'Hospital Management',
+    'summary': 'Patient Appointment and Hospital Management',
+    'author': "XYZ Solutions",
+    'company': 'XYZ Solutions',
+    'website': "http://www.xyz-solution.com",
+    'version': '16.0.0.1.0',
+    'category': "XYZ Solutions/apps",
+    'license': 'AGPL-3',
+    'sequence': 1,
+    'depends': [
+        'base',
+        'stock',
+        'account',
+        'sale',
+        'purchase',
+        'sale_stock',
+        'purchase_stock',
+        'calendar',
+    ],
+    'data': [
+        'security/ir.model.access.csv',
+        'views/patient.xml',
+        'views/appointment.xml',
+        'views/configration.xml',
+    ],
+    'installable': True,
+    'application': True,
+    'auto_install': False,
+}
