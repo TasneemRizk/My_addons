@@ -1,0 +1,70 @@
+<odoo>
+    <record id="report_task_id" model="ir.actions.report">
+        <field name="name">Task Report</field>
+        <field name="model">todo.task</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="binding_model_id" ref="model_todo_task"/>
+        <field name="binding_type">report</field>
+        <field name="report_name">todo_management.task_report_template</field>
+    </record>
+    <template id="task_report_template" >
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <xpath expr="." position="inside">
+                    <link rel="stylesheet" type="text/css" href="/todo_management/static/src/css/todo.css"/>
+                </xpath>
+                    <t t-foreach="docs" t-as="rec">
+                        <table class="task_table">
+                                <tr>
+                                    <td class="bold_td">Task:</td>
+                                    <td><t t-esc="rec.name"/></td>
+                                </tr>
+                                <tr>
+                                    <td class="bold_td">Due Date:</td>
+                                    <td><t t-esc="rec.due_date"/></td>
+                                </tr>
+                                <tr>
+                                    <td class="bold_td">Assign To:</td>
+                                    <td><t t-esc="rec.assign_to.name"/></td>
+                                </tr>
+                                <tr>
+                                    <td class="bold_td">Estimated Time:</td>
+                                    <td><t t-esc="'%d:%d H' % (int(rec.estimated_time), int((rec.estimated_time % 1) * 60))"/></td>
+                                </tr>
+                        </table>
+                        <br/>
+
+                        <table class="desc_table">
+                            <thead><td class="bold_td">Description:</td></thead>
+                            <tbody>
+                                <td><t t-esc="rec.description"/></td>
+                            </tbody>
+                        </table>
+                        <br/>
+
+                        <table class="time_sheet_table">
+                            <thead class="time_sheet_thead"><th colspan="4">Time sheet</th></thead>
+                            <tbody class="time_sheet_tbody">
+                                <td>#</td>
+                                <td>Date</td>
+                                <td>Description</td>
+                                <td>Time</td>
+                                <t t-set="counter" t-value="1"/>
+                                <t t-foreach="rec.line_ids" t-as="line">
+                                    <tr>
+                                        <td><t t-esc="counter"/></td>
+                                        <td><t t-esc="line.date"/></td>
+                                        <td><t t-esc="line.user_input"/></td>
+                                        <td><t t-esc="'%d:%d H' % (int(line.user_taken_time), int((line.user_taken_time % 1) * 60))"/></td>
+                                        <t t-set="counter" t-value="counter + 1"/>
+                                    </tr>
+                                </t>
+                                <td colspan="3">Total Time :</td>
+                                <td><t t-esc="'%d:%d H' % (int(rec.total_hours), int((rec.total_hours % 1) * 60))"/></td>
+                            </tbody>
+                        </table>
+                    </t>
+                </t>
+            </t>
+    </template>
+</odoo>

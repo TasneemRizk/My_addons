@@ -1,0 +1,61 @@
+    .task_table,
+    .desc_table {
+        width: 50%;
+        max-width: 800px;
+        margin-left: 0;
+        margin-right: auto;
+        border-collapse: collapse;
+        margin-top: 20px;
+        font-family: serif;
+    }
+
+    .desc_table,
+    .time_sheet_table
+    {
+        width: 100%;
+    }
+
+    .task_table td,
+    .desc_table td,
+    .desc_table th {
+        border: none;
+        line-height: 1.5;
+        padding: 8px;
+        text-align: left;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .bold_td {
+        font-weight: bold;
+        border: none;
+        color: #800080;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .time_sheet_table,
+    .time_sheet_table thead,
+    .time_sheet_table tbody,
+    .time_sheet_table th,
+    .time_sheet_table td
+     {
+        border: 1px solid #333;
+        text-align: center;
+        font-family: serif;
+        font-weight: normal;
+        line-height: 1.5;
+        padding: 8px;
+             }
+
+    .time_sheet_table thead {
+        font-weight: bold;
+    }
+
+    .time_sheet_table th {
+        background-color: #f5f5f5;
+        font-size: 16px;
+        padding: 14px;
+        color: #800080;
+    }
