@@ -14,10 +14,12 @@
         'wizard/change_state_view.xml',
         'views/base_menu.xml',
         'views/property_view.xml',
-        'views/buliding_view.xml',
-        'views/property_history_view.xml',
         'views/owner_view.xml',
-        'reports/property_report.xml',
     ],
-    'application':True,
+    # 'assets': {
+    #     'web.assets_backend': ['app_one/static/src/property.css']
+    # },
+    'installable': True,
+    'application': False,
+    'auto_install': False,
 }
