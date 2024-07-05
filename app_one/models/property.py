@@ -7,7 +7,7 @@ class Property(models.Model):
     _name = "property"
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
-    name = fields.Char(required=1, default='New', size=7, tracking=1)
+    name = fields.Char(required=1, default='New', size=30, tracking=1)
     active = fields.Boolean(default=True)
     description = fields.Text()
     postcode = fields.Char(required=1, )
@@ -130,9 +130,24 @@ class Property(models.Model):
                     }
                 }
 
+    # def action_open_related_owner(self):
+    #     action = self.env['ir.actions.actions']._for_xml_id('app_one.owner_action')
+    #     view_id =self.env.ref('app_one.owner_view_form')
+    #     action['res_id'] = self.owner_id.id
+    #     action['views'] = [[view_id, 'form']]
+    #     return action
+
     def action_open_related_owner(self):
         action = self.env['ir.actions.actions']._for_xml_id('app_one.owner_action')
-        view_id =self.env.ref('app_one.owner_view_form')
+
+        view_id = self.env.ref('app_one.owner_view_form')
+        if not view_id:
+            raise ValueError("View not found or incorrectly referenced")
+
+        if len(self.owner_id) != 1:
+            raise ValueError("Expected singleton for owner_id, found multiple records")
+
         action['res_id'] = self.owner_id.id
-        action['views'] = [[view_id, 'form']]
+        action['views'] = [[view_id.id, 'form']]
         return action
+
