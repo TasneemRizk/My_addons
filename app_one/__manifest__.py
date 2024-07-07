@@ -15,6 +15,8 @@
         'views/base_menu.xml',
         'views/property_view.xml',
         'views/owner_view.xml',
+        'views/buliding_view.xml',
+        'views/property_history_view.xml',
     ],
     # 'assets': {
     #     'web.assets_backend': ['app_one/static/src/property.css']

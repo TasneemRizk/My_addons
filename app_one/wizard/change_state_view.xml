@@ -4,24 +4,24 @@
         <field name="model">change.state</field>
         <field name="arch" type="xml">
             <tree>
-                            <field name="property_id"/>
-                            <field name="state"/>
-                            <field name="reason"/>
+                <field name="property_id"/>
+                <field name="state"/>
+                <field name="reason"/>
 
             </tree>
         </field>
     </record>
 
     <record id="change_state_wizard_view_form" model="ir.ui.view">
-        <field name="name">change state wizard  form</field>
+        <field name="name">change state wizard form</field>
         <field name="model">change.state</field>
         <field name="arch" type="xml">
             <form>
                 <sheet>
-                    <group >
-                            <field name="property_id"/>
-                            <field name="state"/>
-                            <field name="reason"/>
+                    <group>
+                        <field name="property_id"/>
+                        <field name="state"/>
+                        <field name="reason"/>
                     </group>
                 </sheet>
                 <footer>

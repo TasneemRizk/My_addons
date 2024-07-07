@@ -59,7 +59,7 @@ class PropertyApi(http.Controller):
             vals = json.loads(args)
             property_id.write(vals)
             return request.make_json_response({
-                "message": "Property has been created successfully",
+                "message": "Property has been updated successfully",
                 "id": property_id.id,
                 "name": property_id.name,
             }, status=200)

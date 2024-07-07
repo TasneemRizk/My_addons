@@ -5,10 +5,12 @@
         <field name="model">property.history</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="user_id"/>
+                <field name="changed_by"/>
+                <field name="changed_on"/>
                 <field name="property_id"/>
-                <field name="old_state"/>
-                <field name="new_state"/>
+                <field name="state"/>
+<!--                <field name="old_state"/>-->
+<!--                <field name="new_state"/>-->
                 <field name="reason"/>
             </tree>
         </field>
@@ -22,12 +24,14 @@
                 <sheet>
                     <group>
                         <group string="General Info.">
-                            <field name="user_id"/>
+                            <field name="changed_by"/>
+                            <field name="changed_on"/>
                             <field name="property_id"/>
                         </group>
                         <group string="Additional Info.">
-                            <field name="old_state"/>
-                            <field name="new_state"/>
+                            <field name="state"/>
+<!--                            <field name="old_state"/>-->
+<!--                            <field name="new_state"/>-->
                             <field name="reason"/>
                         </group>
                     </group>

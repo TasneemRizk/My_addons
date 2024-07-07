@@ -40,6 +40,7 @@ class Property(models.Model):
     _sql_constraints = [
         ('unique_name', 'unique("name")', 'Name must be unique')
     ]
+    change_reason = fields.Text()
 
     # It is not working why!
     # _sql_constraints = [
@@ -151,3 +152,14 @@ class Property(models.Model):
         action['views'] = [[view_id.id, 'form']]
         return action
 
+    def action_open_change_state_wizard(self):
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Change State Wizard',
+            'res_model': 'change.state',
+            'view_mode': 'form',
+            'target': 'new',
+            'context': {
+                'default_property_id': self.id,
+            },
+        }
